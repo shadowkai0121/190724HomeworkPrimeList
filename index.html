@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PrimeList</title>
+    <link rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css' />
+</head>
+
+<body>
+
+    <div id="app" class="container bg-dark">
+        <h3>質數表</h3>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <input id="max" class="form-control" @input="checkRange(max.value)" type="text" placeholder="請輸入最大值">
+            </div>
+            <div class="col-md-3">
+                <input id="min" class="form-control" type="text" placeholder="請輸入最小值">
+            </div>
+            <button @click="getPrimes(max.value, min.value)" class="btn btn-info">取得質數</button>
+        </div>
+        <table class="table table-striped  table-bordered table-dark">
+            <tbody>
+                <tr v-for="primes in primeList">
+                    <td v-for="prime in primes" class="text-center">
+                        {{ prime }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
