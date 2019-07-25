@@ -13,6 +13,7 @@ let primeList = new Vue({
             [max, min] = max > min ? [max, min] : [min, max];
 
             this.primeList = this.numList(max, min);
+            console.log(this.primeList);
         },
         checkRange: function (num) {
 
