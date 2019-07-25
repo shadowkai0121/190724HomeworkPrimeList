@@ -2,7 +2,7 @@ let primeList = new Vue({
     el: '#app',
     data: {
         primeList: [],
-        storage: [2, 3, 5]
+        storage: [2, 3, 5, 7, 11, 13]
     },
     methods: {
         getPrimes: function (max, min) {
@@ -13,9 +13,9 @@ let primeList = new Vue({
             [max, min] = max > min ? [max, min] : [min, max];
 
             this.primeList = this.numList(max, min);
-            console.log(this.primeList);
         },
         checkRange: function (num) {
+            num = parseInt(num) ? num : 0;
 
             if (num > Math.max(...this.storage)) {
                 this.setNums(num);
@@ -25,6 +25,7 @@ let primeList = new Vue({
         // 回傳使用者指定範圍的質數
         numList: function (max, min) {
             min = min <= 2 ? 2 : min;
+
 
             let list = [];
             let tmp = [];
@@ -42,7 +43,6 @@ let primeList = new Vue({
             }
 
             list.push(tmp);
-            console.log(list);
             return list;
         },
         // 批次設置質數
