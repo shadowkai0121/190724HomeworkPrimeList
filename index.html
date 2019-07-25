@@ -10,10 +10,9 @@
         href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css' />
 </head>
 
-<body>
-
-    <div id="app" class="container bg-dark">
-        <h3>質數表</h3>
+<body class="container bg-dark">
+    <div id="app" class="my-5">
+        <h3 class="text-primary">質數表</h3>
         <div class="form-group row">
             <div class="col-md-3">
                 <input id="max" class="form-control" @input="checkRange(max.value)" type="text" placeholder="請輸入最大值">
@@ -21,7 +20,9 @@
             <div class="col-md-3">
                 <input id="min" class="form-control" type="text" placeholder="請輸入最小值">
             </div>
-            <button @click="getPrimes(max.value, min.value)" class="btn btn-info">取得質數</button>
+            <div class="col-md-3">
+                <button @click="getPrimes(max.value, min.value)" class="btn btn-info">取得質數</button>
+            </div>
         </div>
         <table class="table table-striped  table-bordered table-dark">
             <tbody>

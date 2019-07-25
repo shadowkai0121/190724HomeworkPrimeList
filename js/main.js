@@ -2,14 +2,7 @@ let primeList = new Vue({
     el: '#app',
     data: {
         primeList: [],
-        storage: []
-    },
-    mounted: function () {
-        if (!localStorage.getItem('primes')) {
-            localStorage.setItem('primes', JSON.stringify([2, 3, 5]));
-        }
-
-        this.storage = JSON.parse(localStorage.getItem('primes'));
+        storage: [2, 3, 5]
     },
     methods: {
         getPrimes: function (max, min) {
@@ -30,7 +23,7 @@ let primeList = new Vue({
         },
         // 回傳使用者指定範圍的質數
         numList: function (max, min) {
-            min = min < 2 ? 2 : min;
+            min = min <= 2 ? 2 : min;
 
             let list = [];
             let tmp = [];
@@ -48,7 +41,7 @@ let primeList = new Vue({
             }
 
             list.push(tmp);
-
+            console.log(list);
             return list;
         },
         // 批次設置質數
@@ -61,7 +54,7 @@ let primeList = new Vue({
         },
         // 建立質數表
         setPrimes: function (num) {
-            let list = JSON.parse(localStorage.getItem('primes'));
+            let list = this.storage;
 
             if (!this.isPrime(num)) {
                 return;
@@ -70,13 +63,12 @@ let primeList = new Vue({
             if (!list.contains(num)) {
                 list.push(num);
 
-                localStorage.setItem('primes', JSON.stringify(list));
                 this.storage = list;
             }
         },
         // 判斷是否為質數
         isPrime: function (num) {
-            let list = JSON.parse(localStorage.getItem('primes'));
+            let list = this.storage;
 
             for (let item of list) {
                 // 是否被自己以外的質數整除
